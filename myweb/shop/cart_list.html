@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+      $(function(){
+        $("#btnList").click(function(){
+          location.href="product_list";
+        });
+
+        $("#btnDelete").click(function(){
+          if(confirm("장바구니를 비우시겠습니까?")){
+            location.href="/shop/cart_del_all";
+          }
+        });
+      });
+    </script>
+</head>
+<body>
+<h2>장바구니</h2>
+<!--{'cartList':cartList, 'cartCount':cartCount, 'sumMoney':sumMoney, 'fee':fee, 'total':total}-->
+{% if cartCount == 0 %}
+장바구니가 비었습니다.
+{% endif %}
+
+{% if cartCount > 0 %}
+  <form name="form1" id="form1" method="post" action="cart_update">
+    {% csrf_token %}
+    <table border="1" width="400px">
+      <tr>
+        <th>상품명</th>
+        <th>상품가격</th>
+        <th>수량</th>
+        <th>금액</th>
+        <th>&nbsp;</th>
+      </tr>
+      {% for row in cartList %}
+      <tr>
+        <td>{{row.product_name}}</td>
+        <td>{{row.price}}</td>
+        <td>
+          <input type="number" name="amount" value="{{row.amount}}" min="0" max="100">
+          <input type="hidden" name="product_id" value="{{row.product_id}}">
+          <input type="hidden" name="cart_id" value="{{row.cart_id}}">
+        </td>
+        <td>{{row.money}}</td>
+        <td><a href="cart_del?cart_id={{row.cart_id}}">[삭제]</a></td>
+      </tr>
+      {% endfor %}
+      <tr>
+        <td colspan="5" align="right">
+          장바구니 금액 합계: {{sumMoney}}<br>
+          배송료: {{fee}}<br>
+          총 결제금액: {{total}}
+        </td>
+      </tr>
+    </table>
+    <input type="submit" value="수정">
+  </form>
+{% endif %}
+<input type="button" id="btnDelete" value="장바구니 비우기">
+<input type="button" id="btnList" value="상품목록 보기">
+</body>
+</html>
