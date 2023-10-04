@@ -1,43 +1,43 @@
--- ÇöÀç Á¢¼ÓµÈ °èÁ¤ È®ÀÎ ÇÏ´Â ¸í·É¾î
+-- í˜„ìž¬ ì ‘ì†ëœ ê³„ì • í™•ì¸ í•˜ëŠ” ëª…ë ¹ì–´
 show user
--- ¿¹¾à¾î(keyword): ¿ëµµ¿Í ±â´ÉÀÌ ¹Ì¸® Á¤ÀÇµÈ ¸í·É¾î
+-- ì˜ˆì•½ì–´(keyword): ìš©ë„ì™€ ê¸°ëŠ¥ì´ ë¯¸ë¦¬ ì •ì˜ëœ ëª…ë ¹ì–´
 
--- ½Ç½À¿¡ »ç¿ëÇÑ ÀÚ·á¸¦ º¹»ç ºÙ¿©³Ö±â ÇÑ ÈÄ ÇØ´ç °èÁ¤¿¡ ´ã´Â ÀÛ¾÷À» ¼öÇàÇÑ´Ù. EMP_EXAMPLE.sql
--- Å×ÀÌºí »èÁ¦ ¸í·É¾î: Å×ÀÌºí »ý¼º Àü¿¡ µ¿ÀÏÇÑ ÀÌ¸§ÀÇ Å×ÀÌºíÀÌ Á¸ÀçÇÏ¸é ¿À·ù°¡ ¹ß»ýÇÏ¹Ç·Î ±âÁ¸ Å×ÀÌºíÀ» Á¦°ÅÇÏ´Â ÀÛ¾÷À» ¸ÕÀú ¼öÇàÇÑ´Ù.
+-- ì‹¤ìŠµì— ì‚¬ìš©í•œ ìžë£Œë¥¼ ë³µì‚¬ ë¶™ì—¬ë„£ê¸° í•œ í›„ í•´ë‹¹ ê³„ì •ì— ë‹´ëŠ” ìž‘ì—…ì„ ìˆ˜í–‰í•œë‹¤. EMP_EXAMPLE.sql
+-- í…Œì´ë¸” ì‚­ì œ ëª…ë ¹ì–´: í…Œì´ë¸” ìƒì„± ì „ì— ë™ì¼í•œ ì´ë¦„ì˜ í…Œì´ë¸”ì´ ì¡´ìž¬í•˜ë©´ ì˜¤ë¥˜ê°€ ë°œìƒí•˜ë¯€ë¡œ ê¸°ì¡´ í…Œì´ë¸”ì„ ì œê±°í•˜ëŠ” ìž‘ì—…ì„ ë¨¼ì € ìˆ˜í–‰í•œë‹¤.
 DROP TABLE EMPLOYEE;
 DROP TABLE DEPARTMENT;
 DROP TABLE SALGRADE;
 
--- DEPARTMENT Å×ÀÌºí »ý¼º, ºÎ¼­¿¡ ´ëÇÑ Á¤º¸¸¦ ´ã±â À§ÇÑ Å×ÀÌºí
+-- DEPARTMENT í…Œì´ë¸” ìƒì„±, ë¶€ì„œì— ëŒ€í•œ ì •ë³´ë¥¼ ë‹´ê¸° ìœ„í•œ í…Œì´ë¸”
 CREATE TABLE DEPARTMENT
-        (DNO NUMBER(2) CONSTRAINT PK_DEPT PRIMARY KEY, -- ºÎ¼­¹øÈ£ ¼ýÀÚ ÃÖ´ë 2±ÛÀÚ, Á¦¾àÁ¶°Ç ±âº»Å°
-         DNAME VARCHAR2(14), -- ºÎ¼­¸í °¡º¯±æÀÌ ¹®ÀÚ ÃÖ´ë 14±ÛÀÚ
-	 LOC   VARCHAR2(13) ) ; -- ºÎ¼­ÀÇ À§Ä¡ °¡º¯±æÀÌ ¹®ÀÚ ÃÖ´ë 13±ÛÀÚ
+        (DNO NUMBER(2) CONSTRAINT PK_DEPT PRIMARY KEY, -- ë¶€ì„œë²ˆí˜¸ ìˆ«ìž ìµœëŒ€ 2ê¸€ìž, ì œì•½ì¡°ê±´ ê¸°ë³¸í‚¤
+         DNAME VARCHAR2(14), -- ë¶€ì„œëª… ê°€ë³€ê¸¸ì´ ë¬¸ìž ìµœëŒ€ 14ê¸€ìž
+	 LOC   VARCHAR2(13) ) ; -- ë¶€ì„œì˜ ìœ„ì¹˜ ê°€ë³€ê¸¸ì´ ë¬¸ìž ìµœëŒ€ 13ê¸€ìž
      
--- EMPLOYEE Å×ÀÌºí »ý¼º, Á÷¿øÁ¤º¸¸¦ ´ã±â À§ÇÑ Å×ÀÌºí
+-- EMPLOYEE í…Œì´ë¸” ìƒì„±, ì§ì›ì •ë³´ë¥¼ ë‹´ê¸° ìœ„í•œ í…Œì´ë¸”
 CREATE TABLE EMPLOYEE 
-        (ENO NUMBER(4) CONSTRAINT PK_EMP PRIMARY KEY, -- »ç¹ø ¼ýÀÚ ÃÖ´ë 4ÀÚ¸®, Á¦¾àÁ¶°Ç ±âº»Å°
-	 ENAME VARCHAR2(10), -- Á÷¿øÀÌ¸§ ¹®ÀÚ ÃÖ´ë 10ÀÚ¸®
- 	 JOB   VARCHAR2(9), -- Á÷ºÎ(Á÷Ã¥)
-	 MANAGER  NUMBER(4), -- Á÷¼Ó»ó°ü »ç¹ø
-	 HIREDATE DATE, -- ÀÔ»çÀÏÀÚ
-	 SALARY NUMBER(7,2), -- ±Þ¿©(ÀüÃ¼ 7°öÀÚ¸®, ¼Ò¼öÁ¡ µÑÂ°ÀÚ¸®)
-	 COMMISSION NUMBER(7,2), -- »ó¿©±Ý(ÀüÃ¼ 7°öÀÚ¸®, ¼Ò¼öÁ¡ µÑÂ°ÀÚ¸®)
-	 DNO NUMBER(2) CONSTRAINT FK_DNO REFERENCES DEPARTMENT); -- ºÎ¼­¹øÈ£ ÂüÁ¶
+        (ENO NUMBER(4) CONSTRAINT PK_EMP PRIMARY KEY, -- ì‚¬ë²ˆ ìˆ«ìž ìµœëŒ€ 4ìžë¦¬, ì œì•½ì¡°ê±´ ê¸°ë³¸í‚¤
+	 ENAME VARCHAR2(10), -- ì§ì›ì´ë¦„ ë¬¸ìž ìµœëŒ€ 10ìžë¦¬
+ 	 JOB   VARCHAR2(9), -- ì§ë¶€(ì§ì±…)
+	 MANAGER  NUMBER(4), -- ì§ì†ìƒê´€ ì‚¬ë²ˆ
+	 HIREDATE DATE, -- ìž…ì‚¬ì¼ìž
+	 SALARY NUMBER(7,2), -- ê¸‰ì—¬(ì „ì²´ 7ê³±ìžë¦¬, ì†Œìˆ˜ì  ë‘˜ì§¸ìžë¦¬)
+	 COMMISSION NUMBER(7,2), -- ìƒì—¬ê¸ˆ(ì „ì²´ 7ê³±ìžë¦¬, ì†Œìˆ˜ì  ë‘˜ì§¸ìžë¦¬)
+	 DNO NUMBER(2) CONSTRAINT FK_DNO REFERENCES DEPARTMENT); -- ë¶€ì„œë²ˆí˜¸ ì°¸ì¡°
      
--- SALGRADE Å×ÀÌºí »ý¼º, Á÷¿øµéÀÇ È£ºÀ¿¡ µû¸¥ ¿¬ºÀ±Ý¾×, 1~5È£ºÀ    
+-- SALGRADE í…Œì´ë¸” ìƒì„±, ì§ì›ë“¤ì˜ í˜¸ë´‰ì— ë”°ë¥¸ ì—°ë´‰ê¸ˆì•¡, 1~5í˜¸ë´‰    
 CREATE TABLE SALGRADE
         (GRADE NUMBER,
 	 LOSAL NUMBER,
 	 HISAL NUMBER );
 
--- DEPARTMENT Å×ÀÌºí¿¡ ·¹ÄÚµå¸¦ »ðÀÔÇÏ´Â ¸í·É¾î (ºÎ¼­¹øÈ£, ºÎ¼­¸í, ºÎ¼­À§Ä¡) 
+-- DEPARTMENT í…Œì´ë¸”ì— ë ˆì½”ë“œë¥¼ ì‚½ìž…í•˜ëŠ” ëª…ë ¹ì–´ (ë¶€ì„œë²ˆí˜¸, ë¶€ì„œëª…, ë¶€ì„œìœ„ì¹˜) 
 INSERT INTO DEPARTMENT VALUES (10,'ACCOUNTING','NEW YORK');
 INSERT INTO DEPARTMENT VALUES (20,'RESEARCH','DALLAS');
 INSERT INTO DEPARTMENT VALUES (30,'SALES','CHICAGO');
 INSERT INTO DEPARTMENT VALUES (40,'OPERATIONS','BOSTON');
 
--- EMPLOYEE Å×ÀÌºí¿¡ ·¹ÄÚµå¸¦ »ðÀÔÇÏ´Â ¸í·É¾î (»ç¹ø, Á÷¿øÀÌ¸§, Á÷¹«, Á÷¼Ó»ó°ü »ç¹ø, ÀÔ»çÀÏÀÚ, ±Þ¿©, »ó¿©±Ý, ºÎ¼­¹øÈ£)
+-- EMPLOYEE í…Œì´ë¸”ì— ë ˆì½”ë“œë¥¼ ì‚½ìž…í•˜ëŠ” ëª…ë ¹ì–´ (ì‚¬ë²ˆ, ì§ì›ì´ë¦„, ì§ë¬´, ì§ì†ìƒê´€ ì‚¬ë²ˆ, ìž…ì‚¬ì¼ìž, ê¸‰ì—¬, ìƒì—¬ê¸ˆ, ë¶€ì„œë²ˆí˜¸)
 INSERT INTO EMPLOYEE VALUES
 (7369,'SMITH','CLERK',    7902,to_date('17-12-1980','dd-mm-yyyy'),800,NULL,20);
 INSERT INTO EMPLOYEE VALUES
@@ -73,6 +73,6 @@ INSERT INTO SALGRADE VALUES (3,1401,2000);
 INSERT INTO SALGRADE VALUES (4,2001,3000);
 INSERT INTO SALGRADE VALUES (5,3001,9999);
 
--- DB¿¡ ¿µ±¸ÀúÀå
+-- DBì— ì˜êµ¬ì €ìž¥
 COMMIT;
 
