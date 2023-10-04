@@ -1,0 +1,27 @@
+-- 특정 레코드 추출 및 SQL 함수 활용
+-- sql*plus: tab(=table), 특정 사용자 계정에 존재하는 테이블의 목록을 보여주는 명령어
+-- 사용자 계정 확인
+show user
+
+-- scott 계정이 가지고 있는 테이블 목록
+-- 추출 및 검색
+select *from tab;
+
+-- DESC: 테이블 구조를 확인하는 명령어(앞에 있을 때)/ 내림차순(뒤에 있을 때)
+desc department
+
+-- sql query: sql 명령어(질의어)
+-- 1. select: 레코드 단위로 특정 레코드를 추출하는 명령어, DML의 한 종류
+-- 기본형식: select 컬럼명(속성명) from 테이블명;
+-- 부서정보를 가지고 있는 department 테이블에 모든 레코드를 추출하는 명령
+select * from department;
+
+-- department 테이블에 loc컬럼만 추출하는 명령
+select loc from department;
+
+-- department 테이블에 dname과 loc 컬럼만 추출하는 명령
+select dname, loc from department;
+
+--확장형식: select 컬럼명 from 테이블명 where 조건식;
+
+
